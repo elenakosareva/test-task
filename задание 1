@@ -1,0 +1,4 @@
+1. SELECT * FROM isometric i, design_drawings dd WHERE i.iso_code = dd.iso_number;
+2. SELECT DISTINCT dd.iso_number,s.member_id,COUNT(*) FROM design_drawings dd, specfication s 
+   WHERE dd.id IS NOT NULL OR dd.id = s.draw_id 
+   GROUP BY dd.iso_number,s.member_id
