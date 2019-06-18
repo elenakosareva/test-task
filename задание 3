@@ -1,0 +1,11 @@
+SELECT MAIN.g_title, MAIN.i_id FROM photo_category p_c, (
+    SELECT ph_g.title g_title, ph_g.c_id cat_id, ph_i.id i_id FROM photo_gallery ph_g, photo_image ph_i
+    WHERE is_main_foto = (
+         SELECT is_main_foto FROM photo_image p_i, photo_gallery p_g 
+         WHERE p_i.g_id = p_g.id 
+         ORDER BY is_main_foto DESC LIMIT 1)
+    ) MAIN
+WHERE MAIN.cat_id = p_c.id
+AND p_c.id = X 
+
+X - заданный ID категории
