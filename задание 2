@@ -1,0 +1,27 @@
+1. CREATE TABLE 'BOOKS' (
+ 'id' int(100) NOT NULL AUTO_INCREMENT,
+ 'name' varchar(255), -- название
+ 'year' varchar(255), -- год
+ 'num_pages' varchar(255), -- количество страниц
+ 'description' varchar(255), -- описание
+ 'id_auth' int(100), -- id автора
+ PRIMARY KEY ('id')
+ ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8
+
+ CREATE TABLE 'AUTHORS' (
+ 'id' int(100) NOT NULL AUTO_INCREMENT,
+ 'surname' varchar(255), -- фамилия
+ 'name' varchar(255), -- имя
+ 'patronymic' varchar(255), -- отчество
+ PRIMARY KEY ('id')
+ ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8
+ 
+ 2. SELECT BOOKS.name, surname, AUTHORS.name, patronymic, year, num_pages, description, COUNT(BOOKS.id) FROM BOOKS, AUTHORS
+ WHERE BOOKS.id_auth=AUTHORS.id
+ 
+ SELECT BOOKS.name, surname, AUTHORS.name, patronymic, year, num_pages, description, COUNT(DISTINCT AUTHORS.id) FROM BOOKS, AUTHORS
+ WHERE BOOKS.id_auth=AUTHORS.id
+ 
+ SELECT BOOKS.name, surname, AUTHORS.name, patronymic, year, num_pages, description, COUNT(BOOKS.id) FROM BOOKS, AUTHORS
+ WHERE BOOKS.id_auth=AUTHORS.id
+ GROUP BY AUTHORS.id
